@@ -1,6 +1,6 @@
 //Maya ASCII 2026 scene
 //Name: SandShark_TestAnim_01.ma
-//Last modified: Tue, Apr 14, 2026 12:35:04 AM
+//Last modified: Mon, Apr 27, 2026 10:08:59 PM
 //Codeset: 1252
 file -rdi 1 -ns "SandSharkRig" -rfn "SandSharkRigRN" -op "v=0;" -typ "mayaAscii"
 		 "D:/FreelanceProjects/MoteSeaAquarium//Rigs/SandSharkRig.ma";
@@ -18,17 +18,17 @@ fileInfo "product" "Maya 2026";
 fileInfo "version" "2026";
 fileInfo "cutIdentifier" "202510291147-60ec9eda33";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 26200)";
-fileInfo "UUID" "9D4EAAAD-4EAD-6D2B-F368-2E9D6ED9AD67";
+fileInfo "UUID" "A49EC52F-4FCC-E234-BAFF-A7BA5C12DDD5";
 createNode transform -s -n "persp";
 	rename -uid "D06D4A57-4780-A85C-77DE-3D93BA7F9337";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 205.51014457109602 27.326941657199288 291.06214883050376 ;
-	setAttr ".r" -type "double3" -8.1383527296160416 34.600000000002645 -9.6598656159685186e-16 ;
+	setAttr ".t" -type "double3" 280.9494340560525 -8.7219219766976046 -9.3177159245104946 ;
+	setAttr ".r" -type "double3" -2.7383527296039629 84.200000000002404 -1.9670685858564936e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "33A8EEE3-4211-1145-CA4E-64BC3AB880E0";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 359.74701399476436;
+	setAttr ".coi" 279.25970749159819;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -123,21 +123,37 @@ createNode camera -n "cameraShape3" -p "camera3";
 	setAttr ".imn" -type "string" "camera1";
 	setAttr ".den" -type "string" "camera1_depth";
 	setAttr ".man" -type "string" "camera1_mask";
+createNode transform -n "camera4";
+	rename -uid "546CE6F0-4D8D-5277-E197-9FA9F1E04DD3";
+createNode camera -n "cameraShape4" -p "camera4";
+	rename -uid "93547DFA-41FB-D258-7B4A-BCBD4A2D1D92";
+	setAttr -k off ".v";
+	setAttr ".rnd" no;
+	setAttr ".cap" -type "double2" 1.4173 0.9449 ;
+	setAttr ".ff" 0;
+	setAttr ".ovr" 1.3;
+	setAttr ".coi" 139.45002800045896;
+	setAttr ".ow" 30;
+	setAttr ".imn" -type "string" "camera1";
+	setAttr ".den" -type "string" "camera1_depth";
+	setAttr ".man" -type "string" "camera1_mask";
+	setAttr ".tp" -type "double3" -2.3348989593826435 -29.448999637428223 45.850302123597587 ;
+	setAttr ".dr" yes;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "52D356E2-45B4-4BF1-63F5-DAB521C5CCAD";
+	rename -uid "B0DF81EC-423D-8953-BF4E-9D9B75A0F716";
 	setAttr -s 3 ".lnk";
 	setAttr -s 3 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "31FB0675-47D6-10A1-72C7-F782533B0664";
+	rename -uid "EC0E87AE-44C5-B758-84DF-EEA4CB6398DB";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "53195F93-4CAA-09CC-7B60-0B8FB58011FE";
+	rename -uid "8DC7A10F-45EB-2FCB-96A6-70863181928A";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "D498ADB8-4622-2B03-17D5-31837F77683A";
+	rename -uid "C9835D28-445B-7CB3-A25B-A8B48916A5DE";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "AB0A0B1C-411B-B287-8FB0-E5A6103FCF58";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "F79D7908-4776-C544-6BCD-45BDACC927B3";
+	rename -uid "0FB5544D-4D51-4E36-A82F-0FA8B71D03DD";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "24B538B2-4FC9-431F-9652-2F8F80B1303C";
 	setAttr ".g" yes;
@@ -147,7 +163,7 @@ createNode script -n "uiConfigurationScriptNode";
 		"// Maya Mel UI Configuration File.\n//\n//  This script is machine generated.  Edit at your own risk.\n//\n//\n\nglobal string $gMainPane;\nif (`paneLayout -exists $gMainPane`) {\n\n\tglobal int $gUseScenePanelConfig;\n\tint    $useSceneConfig = $gUseScenePanelConfig;\n\tint    $nodeEditorPanelVisible = stringArrayContains(\"nodeEditorPanel1\", `getPanel -vis`);\n\tint    $nodeEditorWorkspaceControlOpen = (`workspaceControl -exists nodeEditorPanel1Window` && `workspaceControl -q -visible nodeEditorPanel1Window`);\n\tint    $menusOkayInPanels = `optionVar -q allowMenusInPanels`;\n\tint    $nVisPanes = `paneLayout -q -nvp $gMainPane`;\n\tint    $nPanes = 0;\n\tstring $editorName;\n\tstring $panelName;\n\tstring $itemFilterName;\n\tstring $panelConfig;\n\n\t//\n\t//  get current state of the UI\n\t//\n\tsceneUIReplacement -update $gMainPane;\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Top View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Top View\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\t$editorName = $panelName;\n        modelEditor -e \n            -docTag \"RADRENDER\" \n            -editorChanged \"updateModelPanelBar\" \n            -camera \"|top\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n"
 		+ "            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n"
-		+ "            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 638\n            -height 438\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n"
+		+ "            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1714\n            -height 689\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n"
 		+ "            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Side View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -docTag \"RADRENDER\" \n            -editorChanged \"updateModelPanelBar\" \n            -camera \"|side\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n"
 		+ "            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n"
 		+ "            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n"
@@ -155,7 +171,7 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n"
 		+ "            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n"
 		+ "            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 98\n            -height 0\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -docTag \"RADRENDER\" \n            -camera \"|camera3\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 1\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -docTag \"RADRENDER\" \n            -camera \"|camera4\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 1\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n"
 		+ "            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n"
 		+ "            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1074\n            -height 706\n            -sceneRenderFilter 0\n"
 		+ "            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n"
@@ -185,17 +201,17 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n"
 		+ "                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -excludeObjectPreset \"All\" \n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n"
 		+ "                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -docTag \\\"RADRENDER\\\" \\n    -camera \\\"|camera3\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 1\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1074\\n    -height 706\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -docTag \\\"RADRENDER\\\" \\n    -camera \\\"|camera3\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 1\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1074\\n    -height 706\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -docTag \\\"RADRENDER\\\" \\n    -camera \\\"|camera4\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 1\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1074\\n    -height 706\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -docTag \\\"RADRENDER\\\" \\n    -camera \\\"|camera4\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 1\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1074\\n    -height 706\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "609B00F6-48C6-CE80-D7C2-99984174DDE2";
-	setAttr ".b" -type "string" "playbackOptions -min 0 -max 119 -ast 0 -aet 160 ";
+	setAttr ".b" -type "string" "playbackOptions -min 0 -max 120 -ast 0 -aet 160 ";
 	setAttr ".st" 6;
 createNode reference -n "SandSharkRigRN";
 	rename -uid "510CB65F-4ECC-845D-F7F0-DA9859E63A2A";
-	setAttr -s 67 ".phl";
+	setAttr -s 68 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
 	setAttr ".phl[3]" 0;
@@ -263,11 +279,12 @@ createNode reference -n "SandSharkRigRN";
 	setAttr ".phl[65]" 0;
 	setAttr ".phl[66]" 0;
 	setAttr ".phl[67]" 0;
+	setAttr ".phl[68]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"SandSharkRigRN"
 		"SandSharkRigRN" 0
 		"SandSharkRig:shark_sand_v001RN" 0
-		"SandSharkRigRN" 128
+		"SandSharkRigRN" 139
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Chest_Ctrl_Grp|SandSharkRig:Chest_Ctrl" 
 		"visibility" " 1"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Chest_Ctrl_Grp|SandSharkRig:Chest_Ctrl" 
@@ -287,6 +304,14 @@ createNode reference -n "SandSharkRigRN";
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Ctrl_Grp|SandSharkRig:Jaw_Ctrl" 
 		"scale" " -type \"double3\" 1 1 1"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Ctrl_Grp|SandSharkRig:Jaw_Ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Ctrl_Grp|SandSharkRig:Jaw_Ctrl" 
+		"Ballooning" " -k 1"
+		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Inflation_Ctrl_Grp|SandSharkRig:Jaw_Inflation_Ctrl_Offset_Grp|SandSharkRig:Jaw_Inflation_Ctrl" 
+		"translate" " -type \"double3\" 0 0 0"
+		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Inflation_Ctrl_Grp|SandSharkRig:Jaw_Inflation_Ctrl_Offset_Grp|SandSharkRig:Jaw_Inflation_Ctrl" 
+		"rotate" " -type \"double3\" 0 10 0"
+		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Inflation_Ctrl_Grp|SandSharkRig:Jaw_Inflation_Ctrl_Offset_Grp|SandSharkRig:Jaw_Inflation_Ctrl" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Hip_Ctrl_Grp|SandSharkRig:Hip_Ctrl" 
 		"visibility" " 1"
@@ -334,6 +359,8 @@ createNode reference -n "SandSharkRigRN";
 		"translate" " -type \"double3\" 0 0 0"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_02_Ctrl_Grp|SandSharkRig:L_Fin_02_Ctrl" 
 		"scale" " -type \"double3\" 1 1 1"
+		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_02_Ctrl_Grp|SandSharkRig:L_Fin_02_Ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_03_Ctrl_Grp|SandSharkRig:L_Fin_03_Ctrl" 
 		"visibility" " 1"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_03_Ctrl_Grp|SandSharkRig:L_Fin_03_Ctrl" 
@@ -346,12 +373,16 @@ createNode reference -n "SandSharkRigRN";
 		"translate" " -type \"double3\" 0 0 0"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_01_Ctrl_Grp|SandSharkRig:R_Fin_01_Ctrl" 
 		"scale" " -type \"double3\" 1 1 1"
+		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_01_Ctrl_Grp|SandSharkRig:R_Fin_01_Ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_02_Ctrl_Grp|SandSharkRig:R_Fin_02_Ctrl" 
 		"visibility" " 1"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_02_Ctrl_Grp|SandSharkRig:R_Fin_02_Ctrl" 
 		"translate" " -type \"double3\" 0 0 0"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_02_Ctrl_Grp|SandSharkRig:R_Fin_02_Ctrl" 
 		"scale" " -type \"double3\" 1 1 1"
+		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_02_Ctrl_Grp|SandSharkRig:R_Fin_02_Ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_03_Ctrl_Grp|SandSharkRig:R_Fin_03_Ctrl" 
 		"visibility" " 1"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_03_Ctrl_Grp|SandSharkRig:R_Fin_03_Ctrl" 
@@ -388,6 +419,9 @@ createNode reference -n "SandSharkRigRN";
 		"translate" " -type \"double3\" 0 0 0"
 		2 "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_02_Ctrl_Grp|SandSharkRig:Lower_Tailfin_02_Ctrl" 
 		"scale" " -type \"double3\" 1 1 1"
+		2 "SandSharkRig:Geo_Lyr" "displayType" " 0"
+		2 "SandSharkRig:Jnt_Lyr" "displayType" " 2"
+		2 "SandSharkRig:Jnt_Lyr" "visibility" " 0"
 		2 "SandSharkRig:Ctrl_Lyr" "visibility" " 0"
 		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl.translateX" 
 		"SandSharkRigRN.placeHolderList[1]" ""
@@ -421,108 +455,110 @@ createNode reference -n "SandSharkRigRN";
 		"SandSharkRigRN.placeHolderList[15]" ""
 		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Head_Ctrl_Grp|SandSharkRig:Head_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[16]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Ctrl_Grp|SandSharkRig:Jaw_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Ctrl_Grp|SandSharkRig:Jaw_Ctrl.Ballooning" 
 		"SandSharkRigRN.placeHolderList[17]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Ctrl_Grp|SandSharkRig:Jaw_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Ctrl_Grp|SandSharkRig:Jaw_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[18]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Ctrl_Grp|SandSharkRig:Jaw_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Ctrl_Grp|SandSharkRig:Jaw_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[19]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Hip_Ctrl_Grp|SandSharkRig:Hip_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Chest_Controls|SandSharkRig:Jaw_Ctrl_Grp|SandSharkRig:Jaw_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[20]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Hip_Ctrl_Grp|SandSharkRig:Hip_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Hip_Ctrl_Grp|SandSharkRig:Hip_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[21]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Hip_Ctrl_Grp|SandSharkRig:Hip_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Hip_Ctrl_Grp|SandSharkRig:Hip_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[22]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_01_Ctrl_Grp|SandSharkRig:Tail_01_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Hip_Ctrl_Grp|SandSharkRig:Hip_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[23]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_01_Ctrl_Grp|SandSharkRig:Tail_01_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_01_Ctrl_Grp|SandSharkRig:Tail_01_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[24]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_01_Ctrl_Grp|SandSharkRig:Tail_01_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_01_Ctrl_Grp|SandSharkRig:Tail_01_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[25]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_02_Ctrl_Grp|SandSharkRig:Tail_02_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_01_Ctrl_Grp|SandSharkRig:Tail_01_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[26]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_02_Ctrl_Grp|SandSharkRig:Tail_02_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_02_Ctrl_Grp|SandSharkRig:Tail_02_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[27]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_02_Ctrl_Grp|SandSharkRig:Tail_02_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_02_Ctrl_Grp|SandSharkRig:Tail_02_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[28]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_03_Ctrl_Grp|SandSharkRig:Tail_03_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_02_Ctrl_Grp|SandSharkRig:Tail_02_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[29]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_03_Ctrl_Grp|SandSharkRig:Tail_03_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_03_Ctrl_Grp|SandSharkRig:Tail_03_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[30]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_03_Ctrl_Grp|SandSharkRig:Tail_03_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_03_Ctrl_Grp|SandSharkRig:Tail_03_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[31]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_04_Ctrl_Grp|SandSharkRig:Tail_04_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_03_Ctrl_Grp|SandSharkRig:Tail_03_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[32]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_04_Ctrl_Grp|SandSharkRig:Tail_04_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_04_Ctrl_Grp|SandSharkRig:Tail_04_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[33]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_04_Ctrl_Grp|SandSharkRig:Tail_04_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_04_Ctrl_Grp|SandSharkRig:Tail_04_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[34]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_01_Ctrl_Grp|SandSharkRig:L_Fin_01_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Tail_Controls|SandSharkRig:Tail_04_Ctrl_Grp|SandSharkRig:Tail_04_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[35]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_01_Ctrl_Grp|SandSharkRig:L_Fin_01_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_01_Ctrl_Grp|SandSharkRig:L_Fin_01_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[36]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_01_Ctrl_Grp|SandSharkRig:L_Fin_01_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_01_Ctrl_Grp|SandSharkRig:L_Fin_01_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[37]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_02_Ctrl_Grp|SandSharkRig:L_Fin_02_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_01_Ctrl_Grp|SandSharkRig:L_Fin_01_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[38]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_02_Ctrl_Grp|SandSharkRig:L_Fin_02_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_02_Ctrl_Grp|SandSharkRig:L_Fin_02_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[39]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_02_Ctrl_Grp|SandSharkRig:L_Fin_02_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_02_Ctrl_Grp|SandSharkRig:L_Fin_02_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[40]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_03_Ctrl_Grp|SandSharkRig:L_Fin_03_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_02_Ctrl_Grp|SandSharkRig:L_Fin_02_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[41]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_03_Ctrl_Grp|SandSharkRig:L_Fin_03_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_03_Ctrl_Grp|SandSharkRig:L_Fin_03_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[42]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_03_Ctrl_Grp|SandSharkRig:L_Fin_03_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_03_Ctrl_Grp|SandSharkRig:L_Fin_03_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[43]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_01_Ctrl_Grp|SandSharkRig:R_Fin_01_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:L_Fin_03_Ctrl_Grp|SandSharkRig:L_Fin_03_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[44]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_01_Ctrl_Grp|SandSharkRig:R_Fin_01_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_01_Ctrl_Grp|SandSharkRig:R_Fin_01_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[45]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_01_Ctrl_Grp|SandSharkRig:R_Fin_01_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_01_Ctrl_Grp|SandSharkRig:R_Fin_01_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[46]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_02_Ctrl_Grp|SandSharkRig:R_Fin_02_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_01_Ctrl_Grp|SandSharkRig:R_Fin_01_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[47]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_02_Ctrl_Grp|SandSharkRig:R_Fin_02_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_02_Ctrl_Grp|SandSharkRig:R_Fin_02_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[48]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_02_Ctrl_Grp|SandSharkRig:R_Fin_02_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_02_Ctrl_Grp|SandSharkRig:R_Fin_02_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[49]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_03_Ctrl_Grp|SandSharkRig:R_Fin_03_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_02_Ctrl_Grp|SandSharkRig:R_Fin_02_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[50]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_03_Ctrl_Grp|SandSharkRig:R_Fin_03_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_03_Ctrl_Grp|SandSharkRig:R_Fin_03_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[51]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_03_Ctrl_Grp|SandSharkRig:R_Fin_03_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_03_Ctrl_Grp|SandSharkRig:R_Fin_03_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[52]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_01_Ctrl_Grp|SandSharkRig:Upper_Tailfin_01_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Fin_Controls|SandSharkRig:R_Fin_03_Ctrl_Grp|SandSharkRig:R_Fin_03_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[53]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_01_Ctrl_Grp|SandSharkRig:Upper_Tailfin_01_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_01_Ctrl_Grp|SandSharkRig:Upper_Tailfin_01_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[54]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_01_Ctrl_Grp|SandSharkRig:Upper_Tailfin_01_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_01_Ctrl_Grp|SandSharkRig:Upper_Tailfin_01_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[55]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_02_Ctrl_Grp|SandSharkRig:Upper_Tailfin_02_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_01_Ctrl_Grp|SandSharkRig:Upper_Tailfin_01_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[56]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_02_Ctrl_Grp|SandSharkRig:Upper_Tailfin_02_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_02_Ctrl_Grp|SandSharkRig:Upper_Tailfin_02_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[57]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_02_Ctrl_Grp|SandSharkRig:Upper_Tailfin_02_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_02_Ctrl_Grp|SandSharkRig:Upper_Tailfin_02_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[58]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_03_Ctrl_Grp|SandSharkRig:Upper_Tailfin_03_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_02_Ctrl_Grp|SandSharkRig:Upper_Tailfin_02_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[59]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_03_Ctrl_Grp|SandSharkRig:Upper_Tailfin_03_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_03_Ctrl_Grp|SandSharkRig:Upper_Tailfin_03_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[60]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_03_Ctrl_Grp|SandSharkRig:Upper_Tailfin_03_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_03_Ctrl_Grp|SandSharkRig:Upper_Tailfin_03_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[61]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_01_Ctrl_Grp|SandSharkRig:Lower_Tailfin_01_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Upper_Tailfin_03_Ctrl_Grp|SandSharkRig:Upper_Tailfin_03_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[62]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_01_Ctrl_Grp|SandSharkRig:Lower_Tailfin_01_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_01_Ctrl_Grp|SandSharkRig:Lower_Tailfin_01_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[63]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_01_Ctrl_Grp|SandSharkRig:Lower_Tailfin_01_Ctrl.rotateZ" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_01_Ctrl_Grp|SandSharkRig:Lower_Tailfin_01_Ctrl.rotateY" 
 		"SandSharkRigRN.placeHolderList[64]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_02_Ctrl_Grp|SandSharkRig:Lower_Tailfin_02_Ctrl.rotateX" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_01_Ctrl_Grp|SandSharkRig:Lower_Tailfin_01_Ctrl.rotateZ" 
 		"SandSharkRigRN.placeHolderList[65]" ""
-		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_02_Ctrl_Grp|SandSharkRig:Lower_Tailfin_02_Ctrl.rotateY" 
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_02_Ctrl_Grp|SandSharkRig:Lower_Tailfin_02_Ctrl.rotateX" 
 		"SandSharkRigRN.placeHolderList[66]" ""
+		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_02_Ctrl_Grp|SandSharkRig:Lower_Tailfin_02_Ctrl.rotateY" 
+		"SandSharkRigRN.placeHolderList[67]" ""
 		5 4 "SandSharkRigRN" "|SandSharkRig:SandShark|SandSharkRig:Controls|SandSharkRig:Transform_Ctrl_Grp|SandSharkRig:Transform_Ctrl|SandSharkRig:COG_Ctrl_Grp|SandSharkRig:COG_Ctrl|SandSharkRig:Fin_Controls|SandSharkRig:Tailfin_Controls|SandSharkRig:Lower_Tailfin_02_Ctrl_Grp|SandSharkRig:Lower_Tailfin_02_Ctrl.rotateZ" 
-		"SandSharkRigRN.placeHolderList[67]" "";
+		"SandSharkRigRN.placeHolderList[68]" "";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode aiOptions -s -n "defaultArnoldRenderOptions";
@@ -878,8 +914,7 @@ createNode animCurveTA -n "Jaw_Ctrl_rotateY";
 	rename -uid "1DA7643E-4F2F-1B76-1ECD-A0AC9DB7DBA4";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 -19.730906271192534 60 -15.162223145708641
-		 120 -19.730906271192534;
+	setAttr -s 3 ".ktv[0:2]"  0 -24.730906271192534 60 -20 120 -24.730906271192534;
 createNode animCurveTA -n "Jaw_Ctrl_rotateZ";
 	rename -uid "3B96FBF6-4D13-1CE6-B075-06BD59CEE46C";
 	setAttr ".tan" 16;
@@ -903,7 +938,7 @@ createNode animCurveTA -n "R_Fin_01_Ctrl_rotateZ";
 	rename -uid "D731A926-4091-9BD9-1AA8-BAA41B155C94";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  50 0 110 5 170 0;
+	setAttr -s 3 ".ktv[0:2]"  50 -19 110 -14 170 -19;
 	setAttr ".pre" 3;
 	setAttr ".pst" 3;
 createNode animCurveTA -n "R_Fin_02_Ctrl_rotateX";
@@ -924,7 +959,7 @@ createNode animCurveTA -n "R_Fin_02_Ctrl_rotateZ";
 	rename -uid "28A5A985-4A5D-E17F-9768-3890485403C9";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  60 0 120 5 180 0;
+	setAttr -s 3 ".ktv[0:2]"  60 -5 120 0 180 -5;
 	setAttr ".pre" 3;
 	setAttr ".pst" 3;
 createNode animCurveTA -n "R_Fin_03_Ctrl_rotateX";
@@ -966,7 +1001,7 @@ createNode animCurveTA -n "L_Fin_01_Ctrl_rotateZ";
 	rename -uid "888F0727-40D9-BBC6-8749-13BC0AD9B248";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  30 0 90 5 150 0;
+	setAttr -s 3 ".ktv[0:2]"  30 -19 90 -14 150 -19;
 	setAttr ".pre" 3;
 	setAttr ".pst" 3;
 createNode animCurveTA -n "L_Fin_02_Ctrl_rotateX";
@@ -987,7 +1022,7 @@ createNode animCurveTA -n "L_Fin_02_Ctrl_rotateZ";
 	rename -uid "A0DB3711-4A20-24E3-F247-688D8BA2C1DF";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  40 0 100 5 160 0;
+	setAttr -s 3 ".ktv[0:2]"  40 -5 100 0 160 -5;
 	setAttr ".pre" 3;
 	setAttr ".pst" 3;
 createNode animCurveTA -n "L_Fin_03_Ctrl_rotateX";
@@ -1164,14 +1199,91 @@ createNode animCurveTU -n "camera3_scaleZ";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
 	setAttr ".ktv[0]"  0 1;
+createNode animCurveTU -n "Jaw_Ctrl_Ballooning";
+	rename -uid "498E5648-4ADE-6B3D-4CE6-A3AB42D6FB09";
+	setAttr ".tan" 1;
+	setAttr ".wgt" no;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 5 80 5 120 0;
+	setAttr -s 4 ".kit[0:3]"  16 1 1 16;
+	setAttr -s 4 ".kot[0:3]"  16 1 1 16;
+	setAttr -s 4 ".kix[1:3]"  0.66023969966634921 0.6269874584979257 
+		1;
+	setAttr -s 4 ".kiy[1:3]"  0.75105495070899364 -0.77902934918160294 
+		0;
+	setAttr -s 4 ".kox[1:3]"  0.66023983452481827 0.62698751571231559 
+		1;
+	setAttr -s 4 ".koy[1:3]"  0.75105483215717384 -0.77902930313364904 
+		0;
+	setAttr ".pre" 3;
+	setAttr ".pst" 3;
+createNode animCurveTU -n "camera4_visibility";
+	rename -uid "8A2DE8DB-48F8-8FD8-EA82-8089BA2C340E";
+	setAttr ".tan" 9;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 0;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "camera4_translateX";
+	rename -uid "C61D368E-49C5-7D64-8355-22B050ED1D93";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 269.84793164210038;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "camera4_translateY";
+	rename -uid "6831C3BE-4473-D70C-1B21-109014EA04CB";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 4.2495218946101234;
+	setAttr ".kot[0]"  5;
+createNode animCurveTL -n "camera4_translateZ";
+	rename -uid "818B2FE6-4A8C-B867-4842-1BAF3A90D73F";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 35.685183964002704;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "camera4_rotateX";
+	rename -uid "339BB2B6-490B-85D1-BD10-4EA09E5EDDAB";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -2.3999153349560851;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "camera4_rotateY";
+	rename -uid "BB1A1A7D-4251-032F-CEFA-159AE57775D9";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 75.199999999995498;
+	setAttr ".kot[0]"  5;
+createNode animCurveTA -n "camera4_rotateZ";
+	rename -uid "2B7D1C8E-4F4F-DB0A-AAAA-679795069BA1";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 -7.7818738975253464e-16;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "camera4_scaleX";
+	rename -uid "EED193BF-4017-2492-D0CE-29919261504D";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "camera4_scaleY";
+	rename -uid "EC8B5EC8-45ED-7507-D5C9-8E9740F47B1E";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "camera4_scaleZ";
+	rename -uid "1BCD610C-4F1D-397B-677B-78A884AF0CC3";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  0 1;
+	setAttr ".kot[0]"  5;
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -k on ".fzn";
 	setAttr -av -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -k on ".o" 119;
-	setAttr -av -k on ".unw" 119;
+	setAttr -k on ".o" 58;
+	setAttr -av -k on ".unw" 58;
 	setAttr -av -k on ".etw";
 	setAttr -av -k on ".tps";
 	setAttr -av -k on ".tms";
@@ -1439,8 +1551,6 @@ select -ne :hardwareRenderGlobals;
 	setAttr -k on ".bswa";
 	setAttr -k on ".shml";
 	setAttr -k on ".hwel";
-select -ne :ikSystem;
-	setAttr -s 4 ".sol";
 connectAttr "COG_Ctrl_translateX.o" "SandSharkRigRN.phl[1]";
 connectAttr "COG_Ctrl_translateY.o" "SandSharkRigRN.phl[2]";
 connectAttr "COG_Ctrl_translateZ.o" "SandSharkRigRN.phl[3]";
@@ -1457,57 +1567,58 @@ connectAttr "Chest_Ctrl_rotateZ.o" "SandSharkRigRN.phl[13]";
 connectAttr "Head_Ctrl_rotateX.o" "SandSharkRigRN.phl[14]";
 connectAttr "Head_Ctrl_rotateY.o" "SandSharkRigRN.phl[15]";
 connectAttr "Head_Ctrl_rotateZ.o" "SandSharkRigRN.phl[16]";
-connectAttr "Jaw_Ctrl_rotateY.o" "SandSharkRigRN.phl[17]";
-connectAttr "Jaw_Ctrl_rotateX.o" "SandSharkRigRN.phl[18]";
-connectAttr "Jaw_Ctrl_rotateZ.o" "SandSharkRigRN.phl[19]";
-connectAttr "Hip_Ctrl_rotateZ.o" "SandSharkRigRN.phl[20]";
-connectAttr "Hip_Ctrl_rotateX.o" "SandSharkRigRN.phl[21]";
-connectAttr "Hip_Ctrl_rotateY.o" "SandSharkRigRN.phl[22]";
-connectAttr "Tail_01_Ctrl_rotateX.o" "SandSharkRigRN.phl[23]";
-connectAttr "Tail_01_Ctrl_rotateY.o" "SandSharkRigRN.phl[24]";
-connectAttr "Tail_01_Ctrl_rotateZ.o" "SandSharkRigRN.phl[25]";
-connectAttr "Tail_02_Ctrl_rotateX.o" "SandSharkRigRN.phl[26]";
-connectAttr "Tail_02_Ctrl_rotateY.o" "SandSharkRigRN.phl[27]";
-connectAttr "Tail_02_Ctrl_rotateZ.o" "SandSharkRigRN.phl[28]";
-connectAttr "Tail_03_Ctrl_rotateX.o" "SandSharkRigRN.phl[29]";
-connectAttr "Tail_03_Ctrl_rotateY.o" "SandSharkRigRN.phl[30]";
-connectAttr "Tail_03_Ctrl_rotateZ.o" "SandSharkRigRN.phl[31]";
-connectAttr "Tail_04_Ctrl_rotateX.o" "SandSharkRigRN.phl[32]";
-connectAttr "Tail_04_Ctrl_rotateY.o" "SandSharkRigRN.phl[33]";
-connectAttr "Tail_04_Ctrl_rotateZ.o" "SandSharkRigRN.phl[34]";
-connectAttr "L_Fin_01_Ctrl_rotateZ.o" "SandSharkRigRN.phl[35]";
-connectAttr "L_Fin_01_Ctrl_rotateX.o" "SandSharkRigRN.phl[36]";
-connectAttr "L_Fin_01_Ctrl_rotateY.o" "SandSharkRigRN.phl[37]";
-connectAttr "L_Fin_02_Ctrl_rotateX.o" "SandSharkRigRN.phl[38]";
-connectAttr "L_Fin_02_Ctrl_rotateY.o" "SandSharkRigRN.phl[39]";
-connectAttr "L_Fin_02_Ctrl_rotateZ.o" "SandSharkRigRN.phl[40]";
-connectAttr "L_Fin_03_Ctrl_rotateX.o" "SandSharkRigRN.phl[41]";
-connectAttr "L_Fin_03_Ctrl_rotateY.o" "SandSharkRigRN.phl[42]";
-connectAttr "L_Fin_03_Ctrl_rotateZ.o" "SandSharkRigRN.phl[43]";
-connectAttr "R_Fin_01_Ctrl_rotateX.o" "SandSharkRigRN.phl[44]";
-connectAttr "R_Fin_01_Ctrl_rotateY.o" "SandSharkRigRN.phl[45]";
-connectAttr "R_Fin_01_Ctrl_rotateZ.o" "SandSharkRigRN.phl[46]";
-connectAttr "R_Fin_02_Ctrl_rotateX.o" "SandSharkRigRN.phl[47]";
-connectAttr "R_Fin_02_Ctrl_rotateY.o" "SandSharkRigRN.phl[48]";
-connectAttr "R_Fin_02_Ctrl_rotateZ.o" "SandSharkRigRN.phl[49]";
-connectAttr "R_Fin_03_Ctrl_rotateX.o" "SandSharkRigRN.phl[50]";
-connectAttr "R_Fin_03_Ctrl_rotateY.o" "SandSharkRigRN.phl[51]";
-connectAttr "R_Fin_03_Ctrl_rotateZ.o" "SandSharkRigRN.phl[52]";
-connectAttr "Upper_Tailfin_01_Ctrl_rotateX.o" "SandSharkRigRN.phl[53]";
-connectAttr "Upper_Tailfin_01_Ctrl_rotateY.o" "SandSharkRigRN.phl[54]";
-connectAttr "Upper_Tailfin_01_Ctrl_rotateZ.o" "SandSharkRigRN.phl[55]";
-connectAttr "Upper_Tailfin_02_Ctrl_rotateX.o" "SandSharkRigRN.phl[56]";
-connectAttr "Upper_Tailfin_02_Ctrl_rotateY.o" "SandSharkRigRN.phl[57]";
-connectAttr "Upper_Tailfin_02_Ctrl_rotateZ.o" "SandSharkRigRN.phl[58]";
-connectAttr "Upper_Tailfin_03_Ctrl_rotateX.o" "SandSharkRigRN.phl[59]";
-connectAttr "Upper_Tailfin_03_Ctrl_rotateY.o" "SandSharkRigRN.phl[60]";
-connectAttr "Upper_Tailfin_03_Ctrl_rotateZ.o" "SandSharkRigRN.phl[61]";
-connectAttr "Lower_Tailfin_01_Ctrl_rotateX.o" "SandSharkRigRN.phl[62]";
-connectAttr "Lower_Tailfin_01_Ctrl_rotateY.o" "SandSharkRigRN.phl[63]";
-connectAttr "Lower_Tailfin_01_Ctrl_rotateZ.o" "SandSharkRigRN.phl[64]";
-connectAttr "Lower_Tailfin_02_Ctrl_rotateX.o" "SandSharkRigRN.phl[65]";
-connectAttr "Lower_Tailfin_02_Ctrl_rotateY.o" "SandSharkRigRN.phl[66]";
-connectAttr "Lower_Tailfin_02_Ctrl_rotateZ.o" "SandSharkRigRN.phl[67]";
+connectAttr "Jaw_Ctrl_Ballooning.o" "SandSharkRigRN.phl[17]";
+connectAttr "Jaw_Ctrl_rotateY.o" "SandSharkRigRN.phl[18]";
+connectAttr "Jaw_Ctrl_rotateX.o" "SandSharkRigRN.phl[19]";
+connectAttr "Jaw_Ctrl_rotateZ.o" "SandSharkRigRN.phl[20]";
+connectAttr "Hip_Ctrl_rotateZ.o" "SandSharkRigRN.phl[21]";
+connectAttr "Hip_Ctrl_rotateX.o" "SandSharkRigRN.phl[22]";
+connectAttr "Hip_Ctrl_rotateY.o" "SandSharkRigRN.phl[23]";
+connectAttr "Tail_01_Ctrl_rotateX.o" "SandSharkRigRN.phl[24]";
+connectAttr "Tail_01_Ctrl_rotateY.o" "SandSharkRigRN.phl[25]";
+connectAttr "Tail_01_Ctrl_rotateZ.o" "SandSharkRigRN.phl[26]";
+connectAttr "Tail_02_Ctrl_rotateX.o" "SandSharkRigRN.phl[27]";
+connectAttr "Tail_02_Ctrl_rotateY.o" "SandSharkRigRN.phl[28]";
+connectAttr "Tail_02_Ctrl_rotateZ.o" "SandSharkRigRN.phl[29]";
+connectAttr "Tail_03_Ctrl_rotateX.o" "SandSharkRigRN.phl[30]";
+connectAttr "Tail_03_Ctrl_rotateY.o" "SandSharkRigRN.phl[31]";
+connectAttr "Tail_03_Ctrl_rotateZ.o" "SandSharkRigRN.phl[32]";
+connectAttr "Tail_04_Ctrl_rotateX.o" "SandSharkRigRN.phl[33]";
+connectAttr "Tail_04_Ctrl_rotateY.o" "SandSharkRigRN.phl[34]";
+connectAttr "Tail_04_Ctrl_rotateZ.o" "SandSharkRigRN.phl[35]";
+connectAttr "L_Fin_01_Ctrl_rotateZ.o" "SandSharkRigRN.phl[36]";
+connectAttr "L_Fin_01_Ctrl_rotateX.o" "SandSharkRigRN.phl[37]";
+connectAttr "L_Fin_01_Ctrl_rotateY.o" "SandSharkRigRN.phl[38]";
+connectAttr "L_Fin_02_Ctrl_rotateX.o" "SandSharkRigRN.phl[39]";
+connectAttr "L_Fin_02_Ctrl_rotateY.o" "SandSharkRigRN.phl[40]";
+connectAttr "L_Fin_02_Ctrl_rotateZ.o" "SandSharkRigRN.phl[41]";
+connectAttr "L_Fin_03_Ctrl_rotateX.o" "SandSharkRigRN.phl[42]";
+connectAttr "L_Fin_03_Ctrl_rotateY.o" "SandSharkRigRN.phl[43]";
+connectAttr "L_Fin_03_Ctrl_rotateZ.o" "SandSharkRigRN.phl[44]";
+connectAttr "R_Fin_01_Ctrl_rotateX.o" "SandSharkRigRN.phl[45]";
+connectAttr "R_Fin_01_Ctrl_rotateY.o" "SandSharkRigRN.phl[46]";
+connectAttr "R_Fin_01_Ctrl_rotateZ.o" "SandSharkRigRN.phl[47]";
+connectAttr "R_Fin_02_Ctrl_rotateX.o" "SandSharkRigRN.phl[48]";
+connectAttr "R_Fin_02_Ctrl_rotateY.o" "SandSharkRigRN.phl[49]";
+connectAttr "R_Fin_02_Ctrl_rotateZ.o" "SandSharkRigRN.phl[50]";
+connectAttr "R_Fin_03_Ctrl_rotateX.o" "SandSharkRigRN.phl[51]";
+connectAttr "R_Fin_03_Ctrl_rotateY.o" "SandSharkRigRN.phl[52]";
+connectAttr "R_Fin_03_Ctrl_rotateZ.o" "SandSharkRigRN.phl[53]";
+connectAttr "Upper_Tailfin_01_Ctrl_rotateX.o" "SandSharkRigRN.phl[54]";
+connectAttr "Upper_Tailfin_01_Ctrl_rotateY.o" "SandSharkRigRN.phl[55]";
+connectAttr "Upper_Tailfin_01_Ctrl_rotateZ.o" "SandSharkRigRN.phl[56]";
+connectAttr "Upper_Tailfin_02_Ctrl_rotateX.o" "SandSharkRigRN.phl[57]";
+connectAttr "Upper_Tailfin_02_Ctrl_rotateY.o" "SandSharkRigRN.phl[58]";
+connectAttr "Upper_Tailfin_02_Ctrl_rotateZ.o" "SandSharkRigRN.phl[59]";
+connectAttr "Upper_Tailfin_03_Ctrl_rotateX.o" "SandSharkRigRN.phl[60]";
+connectAttr "Upper_Tailfin_03_Ctrl_rotateY.o" "SandSharkRigRN.phl[61]";
+connectAttr "Upper_Tailfin_03_Ctrl_rotateZ.o" "SandSharkRigRN.phl[62]";
+connectAttr "Lower_Tailfin_01_Ctrl_rotateX.o" "SandSharkRigRN.phl[63]";
+connectAttr "Lower_Tailfin_01_Ctrl_rotateY.o" "SandSharkRigRN.phl[64]";
+connectAttr "Lower_Tailfin_01_Ctrl_rotateZ.o" "SandSharkRigRN.phl[65]";
+connectAttr "Lower_Tailfin_02_Ctrl_rotateX.o" "SandSharkRigRN.phl[66]";
+connectAttr "Lower_Tailfin_02_Ctrl_rotateY.o" "SandSharkRigRN.phl[67]";
+connectAttr "Lower_Tailfin_02_Ctrl_rotateZ.o" "SandSharkRigRN.phl[68]";
 connectAttr "camera1_visibility.o" "camera1.v";
 connectAttr "camera1_translateX.o" "camera1.tx";
 connectAttr "camera1_translateY.o" "camera1.ty";
@@ -1538,6 +1649,16 @@ connectAttr "camera3_rotateZ.o" "camera3.rz";
 connectAttr "camera3_scaleX.o" "camera3.sx";
 connectAttr "camera3_scaleY.o" "camera3.sy";
 connectAttr "camera3_scaleZ.o" "camera3.sz";
+connectAttr "camera4_visibility.o" "camera4.v";
+connectAttr "camera4_translateX.o" "camera4.tx";
+connectAttr "camera4_translateY.o" "camera4.ty";
+connectAttr "camera4_translateZ.o" "camera4.tz";
+connectAttr "camera4_rotateX.o" "camera4.rx";
+connectAttr "camera4_rotateY.o" "camera4.ry";
+connectAttr "camera4_rotateZ.o" "camera4.rz";
+connectAttr "camera4_scaleX.o" "camera4.sx";
+connectAttr "camera4_scaleY.o" "camera4.sy";
+connectAttr "camera4_scaleZ.o" "camera4.sz";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
