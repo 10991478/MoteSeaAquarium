@@ -1,34 +1,36 @@
 //Maya ASCII 2026 scene
 //Name: Manatee_TestAnim_01.ma
-//Last modified: Mon, Apr 27, 2026 09:08:12 PM
+//Last modified: Fri, May 01, 2026 09:06:14 PM
 //Codeset: 1252
 file -rdi 1 -ns "ManateeRig" -rfn "ManateeRigRN" -op "v=0;" -typ "mayaAscii"
 		 "D:/FreelanceProjects/MoteSeaAquarium//Rigs/ManateeRig.ma";
 file -rdi 2 -ns "manatee_v001" -rfn "ManateeRig:manatee_v001RN" -op "v=0;" 
 		-typ "mayaAscii" "D:/FreelanceProjects/MoteSeaAquarium//Models/manatee_v001.ma";
+file -rdi 2 -ns "manatee_model_v002" -rfn "ManateeRig:manatee_model_v002RN"
+		 -op "VERS|2026|UVER|undef|MADE|undef|CHNG|Fri, May 01, 2026 02:26:55 PM|ICON|undef|INFO|undef|OBJN|44|INCL|undef(|LUNI|cm|TUNI|film|AUNI|deg|TDUR|141120000|"
+		 -typ "mayaBinary" "D:/FreelanceProjects/MoteSeaAquarium//Models/manatee_model_v002.mb";
 file -r -ns "ManateeRig" -dr 1 -rfn "ManateeRigRN" -op "v=0;" -typ "mayaAscii" "D:/FreelanceProjects/MoteSeaAquarium//Rigs/ManateeRig.ma";
 requires maya "2026";
 requires "stereoCamera" "10.0";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiImagerDenoiserOidn"
 		 "mtoa" "5.5.4.2";
-requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2026";
 fileInfo "version" "2026";
 fileInfo "cutIdentifier" "202510291147-60ec9eda33";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 26200)";
-fileInfo "UUID" "F2CD48A6-4906-AA71-E3B3-838BE01F24FD";
+fileInfo "UUID" "EB9CD15A-4BDB-FB25-CF8A-1EB865A1357F";
 createNode transform -s -n "persp";
 	rename -uid "5405A6B1-4638-3034-ED30-8BB11B722C38";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -464.32292364612601 -8.1692356266341513 147.68091205832619 ;
-	setAttr ".r" -type "double3" -1.5383527294846586 -71.399999999998101 -3.1161446271769483e-16 ;
+	setAttr ".t" -type "double3" 487.1288562731886 108.02102194370858 20.347492321309989 ;
+	setAttr ".r" -type "double3" -14.738352728976031 86.599999999964567 -2.6814611058258742e-14 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "134919D5-41FC-7245-D222-AF9ED90E01A3";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 464.51689875656541;
+	setAttr ".coi" 493.94209000707167;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -124,20 +126,20 @@ createNode camera -n "cameraShape3" -p "camera3";
 	setAttr ".den" -type "string" "camera1_depth";
 	setAttr ".man" -type "string" "camera1_mask";
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "C6C90162-4C89-BD3E-4B9B-38B9F9854BF7";
-	setAttr -s 3 ".lnk";
-	setAttr -s 3 ".slnk";
+	rename -uid "DEF6BD35-41EA-39D6-688C-1EA875D8117E";
+	setAttr -s 4 ".lnk";
+	setAttr -s 4 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "79369B65-4969-1C69-9F58-C8B0ECE57C72";
+	rename -uid "E37B6BCF-42B1-859D-DD30-FC91474516E1";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "3166877C-44A6-14BB-9844-72AF821A1A14";
+	rename -uid "61AFB1E1-4D05-5398-0B2C-879B9B209AE5";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "DDBAF0B1-49EB-82EB-EA1B-0CB8D08F39D7";
+	rename -uid "A2D1B271-4D13-CAE8-2462-1C95EBC6B63F";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "7A49CE5E-423D-B85D-113C-06BBE7C8AECF";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "486C99BE-47E1-E05B-8A95-6996B2215A1B";
+	rename -uid "F4A27814-45AF-C84B-45E1-219D3063D75B";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "C00CDF92-40EA-1D1D-19BA-EBA537E46019";
 	setAttr ".g" yes;
@@ -147,17 +149,17 @@ createNode script -n "uiConfigurationScriptNode";
 		"// Maya Mel UI Configuration File.\n//\n//  This script is machine generated.  Edit at your own risk.\n//\n//\n\nglobal string $gMainPane;\nif (`paneLayout -exists $gMainPane`) {\n\n\tglobal int $gUseScenePanelConfig;\n\tint    $useSceneConfig = $gUseScenePanelConfig;\n\tint    $nodeEditorPanelVisible = stringArrayContains(\"nodeEditorPanel1\", `getPanel -vis`);\n\tint    $nodeEditorWorkspaceControlOpen = (`workspaceControl -exists nodeEditorPanel1Window` && `workspaceControl -q -visible nodeEditorPanel1Window`);\n\tint    $menusOkayInPanels = `optionVar -q allowMenusInPanels`;\n\tint    $nVisPanes = `paneLayout -q -nvp $gMainPane`;\n\tint    $nPanes = 0;\n\tstring $editorName;\n\tstring $panelName;\n\tstring $itemFilterName;\n\tstring $panelConfig;\n\n\t//\n\t//  get current state of the UI\n\t//\n\tsceneUIReplacement -update $gMainPane;\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Top View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Top View\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\t$editorName = $panelName;\n        modelEditor -e \n            -docTag \"RADRENDER\" \n            -editorChanged \"updateModelPanelBar\" \n            -camera \"|top\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n"
 		+ "            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n"
-		+ "            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1714\n            -height 689\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n"
+		+ "            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 638\n            -height 438\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n"
 		+ "            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Side View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -docTag \"RADRENDER\" \n            -editorChanged \"updateModelPanelBar\" \n            -camera \"|side\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 1\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n"
 		+ "            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n"
 		+ "            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n"
-		+ "            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -docTag \"RADRENDER\" \n            -editorChanged \"updateModelPanelBar\" \n            -camera \"|front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n"
+		+ "            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 98\n            -height 0\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -docTag \"RADRENDER\" \n            -editorChanged \"updateModelPanelBar\" \n            -camera \"|front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n"
 		+ "            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n"
 		+ "            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n"
-		+ "            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n"
+		+ "            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 98\n            -height 0\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n"
 		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -docTag \"RADRENDER\" \n            -camera \"|persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 1\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n"
 		+ "            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n"
-		+ "            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1074\n            -height 706\n            -sceneRenderFilter 0\n"
+		+ "            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1042\n            -height 706\n            -sceneRenderFilter 0\n"
 		+ "            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n"
 		+ "            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n"
 		+ "            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -selectCommand \"print(\\\"\\\")\" \n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            -ufeFilter \"USD\" \"InactivePrims\" -ufeFilterValue 1\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n"
@@ -184,9 +186,13 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 0\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 32768\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -rendererOverrideName \"stereoOverrideVP2\" \n"
 		+ "                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n"
 		+ "                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -excludeObjectPreset \"All\" \n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n"
-		+ "                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -docTag \\\"RADRENDER\\\" \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 1\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1074\\n    -height 706\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -docTag \\\"RADRENDER\\\" \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 1\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1074\\n    -height 706\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Model Panel5\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Model Panel5\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|camera1\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 1\n            -bufferMode \"double\" \n"
+		+ "            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n"
+		+ "            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n"
+		+ "            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1699\n            -height 934\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n"
+		+ "\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -docTag \\\"RADRENDER\\\" \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 1\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1042\\n    -height 706\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -docTag \\\"RADRENDER\\\" \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 1\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1042\\n    -height 706\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
@@ -195,7 +201,7 @@ createNode script -n "sceneConfigurationScriptNode";
 	setAttr ".st" 6;
 createNode reference -n "ManateeRigRN";
 	rename -uid "1109C395-4232-439D-3E7A-88896AD883AF";
-	setAttr -s 141 ".phl";
+	setAttr -s 159 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
 	setAttr ".phl[3]" 0;
@@ -337,19 +343,46 @@ createNode reference -n "ManateeRigRN";
 	setAttr ".phl[139]" 0;
 	setAttr ".phl[140]" 0;
 	setAttr ".phl[141]" 0;
+	setAttr ".phl[142]" 0;
+	setAttr ".phl[143]" 0;
+	setAttr ".phl[144]" 0;
+	setAttr ".phl[145]" 0;
+	setAttr ".phl[146]" 0;
+	setAttr ".phl[147]" 0;
+	setAttr ".phl[148]" 0;
+	setAttr ".phl[149]" 0;
+	setAttr ".phl[150]" 0;
+	setAttr ".phl[151]" 0;
+	setAttr ".phl[152]" 0;
+	setAttr ".phl[153]" 0;
+	setAttr ".phl[154]" 0;
+	setAttr ".phl[155]" 0;
+	setAttr ".phl[156]" 0;
+	setAttr ".phl[157]" 0;
+	setAttr ".phl[158]" 0;
+	setAttr ".phl[159]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"ManateeRigRN"
 		"ManateeRig:manatee_v001RN" 0
 		"ManateeRigRN" 0
-		"ManateeRigRN" 200
+		"ManateeRig:manatee_model_v002RN" 0
+		"ManateeRigRN" 217
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control" 
 		"scale" " -type \"double3\" 1 1 1"
+		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl" 
+		"visibility" " 1"
+		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl" 
+		"translate" " -type \"double3\" 0 0 -20"
+		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl" 
+		"rotate" " -type \"double3\" 0 0 0"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl" 
 		"scale" " -type \"double3\" 1 1 1"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl" 
 		"scale" " -type \"double3\" 1 1 1"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl" 
 		"scale" " -type \"double3\" 1 1 1"
+		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl" 
 		"overrideDisplayType" " 0"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl" 
@@ -403,10 +436,6 @@ createNode reference -n "ManateeRigRN";
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl" 
 		"scale" " -type \"double3\" 1 1 1"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl" 
-		"visibility" " 1"
-		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl" 
-		"scale" " -type \"double3\" 1 1 1"
-		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl" 
 		"visibility" " 1"
@@ -435,10 +464,6 @@ createNode reference -n "ManateeRigRN";
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl" 
 		"scale" " -type \"double3\" 1 1 1"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl" 
-		"visibility" " 1"
-		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl" 
-		"scale" " -type \"double3\" 1 1 1"
-		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl" 
 		"visibility" " 1"
@@ -447,10 +472,6 @@ createNode reference -n "ManateeRigRN";
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl" 
-		"visibility" " 1"
-		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl" 
-		"scale" " -type \"double3\" 1 1 1"
-		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl" 
 		"visibility" " 1"
@@ -458,289 +479,326 @@ createNode reference -n "ManateeRigRN";
 		"scale" " -type \"double3\" 1 1 1"
 		2 "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "ManateeRig:Jnt_Lyr" "visibility" " 0"
 		2 "ManateeRig:Ctrl_Lyr" "visibility" " 1"
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control.translateX" 
 		"ManateeRigRN.placeHolderList[1]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control.translateY" 
 		"ManateeRigRN.placeHolderList[2]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control.translateZ" 
 		"ManateeRigRN.placeHolderList[3]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control.rotateX" 
 		"ManateeRigRN.placeHolderList[4]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control.rotateY" 
 		"ManateeRigRN.placeHolderList[5]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control.rotateZ" 
 		"ManateeRigRN.placeHolderList[6]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[7]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[8]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[9]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[10]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[11]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Spine_Ctrl_Grp|ManateeRig:Spine_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[12]" ""
-		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[13]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[14]" ""
-		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[15]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[16]" ""
-		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[17]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Chest_Ctrl_Grp|ManateeRig:Chest_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[18]" ""
-		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateX" 
+		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[19]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[20]" ""
-		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateY" 
+		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[21]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[22]" ""
-		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateZ" 
+		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[23]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[24]" ""
-		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateOrder" 
+		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[25]" ""
-		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[26]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleX" 
+		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[27]" ""
-		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[28]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleY" 
+		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[29]" ""
-		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[30]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleZ" 
+		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.rotateOrder" 
 		"ManateeRigRN.placeHolderList[31]" ""
-		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.visibility" 
+		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleX" 
 		"ManateeRigRN.placeHolderList[32]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.visibility" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleX" 
 		"ManateeRigRN.placeHolderList[33]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.translateX" 
+		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleY" 
 		"ManateeRigRN.placeHolderList[34]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleY" 
 		"ManateeRigRN.placeHolderList[35]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.translateZ" 
+		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleZ" 
 		"ManateeRigRN.placeHolderList[36]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.scaleZ" 
 		"ManateeRigRN.placeHolderList[37]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.rotateY" 
+		5 3 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.visibility" 
 		"ManateeRigRN.placeHolderList[38]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Spine_Controls|ManateeRig:Head_Ctrl_Grp|ManateeRig:Head_Ctrl.visibility" 
 		"ManateeRigRN.placeHolderList[39]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[40]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[41]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[42]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[43]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[44]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Hips_Ctrl_Grp|ManateeRig:Hips_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[45]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[46]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[47]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[48]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[49]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[50]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_01_Ctrl_Grp|ManateeRig:Tail_01_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[51]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[52]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[53]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[54]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[55]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[56]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_02_Ctrl_Grp|ManateeRig:Tail_02_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[57]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[58]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[59]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[60]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[61]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[62]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_03_Ctrl_Grp|ManateeRig:Tail_03_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[63]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[64]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[65]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[66]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[67]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[68]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_04_Ctrl_Grp|ManateeRig:Tail_04_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[69]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[70]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[71]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[72]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[73]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[74]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_05_Ctrl_Grp|ManateeRig:Tail_05_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[75]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[76]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[77]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[78]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[79]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[80]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[81]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.scaleX" 
 		"ManateeRigRN.placeHolderList[82]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.scaleY" 
 		"ManateeRigRN.placeHolderList[83]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.scaleZ" 
 		"ManateeRigRN.placeHolderList[84]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_06_Ctrl_Grp|ManateeRig:Tail_06_Ctrl.visibility" 
 		"ManateeRigRN.placeHolderList[85]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[86]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[87]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[88]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[89]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[90]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tail_Controls|ManateeRig:Tail_07_Ctrl_Grp|ManateeRig:Tail_07_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[91]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[92]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[93]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[94]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[95]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[96]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_01_Ctrl_Grp|ManateeRig:L_Arm_01_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[97]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[98]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[99]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[100]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[101]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[102]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_02_Ctrl_Grp|ManateeRig:L_Arm_02_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[103]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[104]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[105]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[106]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[107]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[108]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:L_Arm_03_Ctrl_Grp|ManateeRig:L_Arm_03_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[109]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[110]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[111]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[112]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[113]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[114]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_01_Ctrl_Grp|ManateeRig:R_Arm_01_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[115]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[116]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[117]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[118]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[119]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[120]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_02_Ctrl_Grp|ManateeRig:R_Arm_02_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[121]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[122]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[123]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[124]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[125]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[126]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Arm_Controls|ManateeRig:R_Arm_03_Ctrl_Grp|ManateeRig:R_Arm_03_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[127]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[128]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[129]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[130]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.rotateX" 
 		"ManateeRigRN.placeHolderList[131]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.rotateY" 
 		"ManateeRigRN.placeHolderList[132]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.rotateZ" 
 		"ManateeRigRN.placeHolderList[133]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.scaleX" 
 		"ManateeRigRN.placeHolderList[134]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.rotateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.scaleY" 
 		"ManateeRigRN.placeHolderList[135]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl.translateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.scaleZ" 
 		"ManateeRigRN.placeHolderList[136]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl.translateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_01_Ctrl_Grp|ManateeRig:L_Tailfin_01_Ctrl.visibility" 
 		"ManateeRigRN.placeHolderList[137]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl.translateZ" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.translateX" 
 		"ManateeRigRN.placeHolderList[138]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl.rotateX" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.translateY" 
 		"ManateeRigRN.placeHolderList[139]" ""
-		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl.rotateY" 
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.translateZ" 
 		"ManateeRigRN.placeHolderList[140]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.rotateX" 
+		"ManateeRigRN.placeHolderList[141]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.rotateY" 
+		"ManateeRigRN.placeHolderList[142]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:L_Tailfin_02_Ctrl_Grp|ManateeRig:L_Tailfin_02_Ctrl.rotateZ" 
+		"ManateeRigRN.placeHolderList[143]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.translateX" 
+		"ManateeRigRN.placeHolderList[144]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.translateY" 
+		"ManateeRigRN.placeHolderList[145]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.translateZ" 
+		"ManateeRigRN.placeHolderList[146]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.rotateX" 
+		"ManateeRigRN.placeHolderList[147]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.rotateY" 
+		"ManateeRigRN.placeHolderList[148]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.rotateZ" 
+		"ManateeRigRN.placeHolderList[149]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.scaleX" 
+		"ManateeRigRN.placeHolderList[150]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.scaleY" 
+		"ManateeRigRN.placeHolderList[151]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.scaleZ" 
+		"ManateeRigRN.placeHolderList[152]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_01_Ctrl_Grp|ManateeRig:R_Tailfin_01_Ctrl.visibility" 
+		"ManateeRigRN.placeHolderList[153]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl.translateX" 
+		"ManateeRigRN.placeHolderList[154]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl.translateY" 
+		"ManateeRigRN.placeHolderList[155]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl.translateZ" 
+		"ManateeRigRN.placeHolderList[156]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl.rotateX" 
+		"ManateeRigRN.placeHolderList[157]" ""
+		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl.rotateY" 
+		"ManateeRigRN.placeHolderList[158]" ""
 		5 4 "ManateeRigRN" "|ManateeRig:Manatee|ManateeRig:Controls|ManateeRig:Transform_Control_Grp|ManateeRig:Transform_Control|ManateeRig:COG_Ctrl_Grp|ManateeRig:COG_Ctrl|ManateeRig:Tailfin_Controls|ManateeRig:R_Tailfin_02_Ctrl_Grp|ManateeRig:R_Tailfin_02_Ctrl.rotateZ" 
-		"ManateeRigRN.placeHolderList[141]" "";
+		"ManateeRigRN.placeHolderList[159]" "";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode aiOptions -s -n "defaultArnoldRenderOptions";
@@ -1007,8 +1065,7 @@ createNode animCurveTA -n "Tail_06_Ctrl_rotateZ";
 	rename -uid "5F605C93-460B-7B49-78B1-9598FB24E778";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  40 6.0000000000000009 96 -14.999999999999998
-		 152 6.0000000000000009;
+	setAttr -s 3 ".ktv[0:2]"  40 6.0000000000000009 96 -40 152 6.0000000000000009;
 	setAttr ".pre" 3;
 	setAttr ".pst" 3;
 createNode animCurveTL -n "Tail_07_Ctrl_translateX";
@@ -1078,7 +1135,7 @@ createNode animCurveTA -n "L_Tailfin_01_Ctrl_rotateX";
 	rename -uid "F0F47145-486C-FEE3-76B1-69B1B56748C8";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  40 0 96 14.999999999999998 152 0;
+	setAttr -s 3 ".ktv[0:2]"  40 0 96 0 152 0;
 	setAttr ".pre" 3;
 	setAttr ".pst" 3;
 createNode animCurveTA -n "L_Tailfin_01_Ctrl_rotateY";
@@ -1092,7 +1149,7 @@ createNode animCurveTA -n "L_Tailfin_01_Ctrl_rotateZ";
 	rename -uid "BC11BEDF-4705-38F0-A66B-66B159A3F613";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  40 0 96 -15.000000000000014 152 0;
+	setAttr -s 3 ".ktv[0:2]"  40 0 96 -5 152 0;
 	setAttr ".pre" 3;
 	setAttr ".pst" 3;
 createNode animCurveTL -n "R_Tailfin_01_Ctrl_translateX";
@@ -1120,7 +1177,7 @@ createNode animCurveTA -n "R_Tailfin_01_Ctrl_rotateX";
 	rename -uid "0A2413C5-4A67-FCE6-D362-F2ACE70C20E7";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  40 0 96 14.999999999999998 152 0;
+	setAttr -s 3 ".ktv[0:2]"  40 0 96 0 152 0;
 	setAttr ".pre" 3;
 	setAttr ".pst" 3;
 createNode animCurveTA -n "R_Tailfin_01_Ctrl_rotateY";
@@ -1134,7 +1191,7 @@ createNode animCurveTA -n "R_Tailfin_01_Ctrl_rotateZ";
 	rename -uid "35CEE106-40CC-6356-00EE-9383C6D14CCC";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  40 0 96 -15.000000000000014 152 0;
+	setAttr -s 3 ".ktv[0:2]"  40 0 96 -5 152 0;
 	setAttr ".pre" 3;
 	setAttr ".pst" 3;
 createNode animCurveTL -n "L_Tailfin_02_Ctrl_translateX";
@@ -1866,8 +1923,7 @@ createNode animCurveTA -n "Chest_Ctrl_rotateZ";
 	rename -uid "0F8F94FB-464D-E86E-18D0-158F099B701A";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  -24 3.7499999999999996 32 -1.5000000000000002
-		 88 3.7499999999999996;
+	setAttr -s 3 ".ktv[0:2]"  -24 -1.2500000000000002 32 -6.5 88 -1.2500000000000002;
 	setAttr ".pre" 3;
 	setAttr ".pst" 3;
 createNode animCurveTL -n "Head_Ctrl_translateX";
@@ -1909,7 +1965,7 @@ createNode animCurveTA -n "Head_Ctrl_rotateZ";
 	rename -uid "0B92A3D9-439E-BA82-0E20-64ABCF57959A";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  -32 5 24 -2 80 5;
+	setAttr -s 3 ".ktv[0:2]"  -32 0 24 -7 80 0;
 	setAttr ".pre" 3;
 	setAttr ".pst" 3;
 createNode animLayer -n "BaseAnimation";
@@ -1933,7 +1989,7 @@ createNode animBlendNodeAdditiveDL -n "ManateeRig:Head_Ctrl_translateZ_AnimLayer
 	rename -uid "15735861-4363-39F0-E76A-B48C6C27F333";
 createNode animBlendNodeAdditiveRotation -n "ManateeRig:Head_Ctrl_rotate_AnimLayer1";
 	rename -uid "D646D608-4E19-14E9-9778-34A29891144A";
-	setAttr ".o" -type "double3" -1.7773823576378283 -6.3470279642581291 0.15208058386169604 ;
+	setAttr ".o" -type "double3" -0.13255777052866169 -0.47336346780402033 -6.4519216675774409 ;
 createNode animBlendNodeAdditiveScale -n "ManateeRig:Head_Ctrl_scaleX_AnimLayer1";
 	rename -uid "A6BF592C-4868-F151-565E-59951B6DF0DA";
 	setAttr ".ia" 1;
@@ -2170,14 +2226,119 @@ createNode animCurveTU -n "camera3_scaleZ";
 	setAttr ".tan" 16;
 	setAttr ".wgt" no;
 	setAttr ".ktv[0]"  0 1;
+createNode animCurveTU -n "Tail_06_Ctrl_visibility";
+	rename -uid "5D385741-440D-0E8F-F5F8-C4953D727916";
+	setAttr ".tan" 9;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "Tail_06_Ctrl_scaleX";
+	rename -uid "AA96AD04-46F3-4096-3A01-2BAE1ECA7883";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+createNode animCurveTU -n "Tail_06_Ctrl_scaleY";
+	rename -uid "043221EF-47C6-6E00-399B-9CBF70AFD220";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+createNode animCurveTU -n "Tail_06_Ctrl_scaleZ";
+	rename -uid "E9BD7EA0-40CB-31E1-939A-22BC27CAE1FA";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+createNode animCurveTU -n "L_Tailfin_01_Ctrl_visibility";
+	rename -uid "17986D8C-49D2-2311-86D3-0A8E15855DCC";
+	setAttr ".tan" 9;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "L_Tailfin_01_Ctrl_scaleX";
+	rename -uid "23BA38D2-400F-42AB-69EB-4CB163DE5383";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+createNode animCurveTU -n "L_Tailfin_01_Ctrl_scaleY";
+	rename -uid "6898673B-4ED7-8FBC-E882-72BE9E3072C7";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+createNode animCurveTU -n "L_Tailfin_01_Ctrl_scaleZ";
+	rename -uid "07DD522A-4E14-8296-FFF7-B3AF860086D7";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+createNode animCurveTU -n "R_Tailfin_01_Ctrl_visibility";
+	rename -uid "33A8527E-45D1-DEF1-6A5B-13BCE35B855F";
+	setAttr ".tan" 9;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+	setAttr ".kot[0]"  5;
+createNode animCurveTU -n "R_Tailfin_01_Ctrl_scaleX";
+	rename -uid "07873654-4E61-F313-5969-D5A5794B8F20";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+createNode animCurveTU -n "R_Tailfin_01_Ctrl_scaleY";
+	rename -uid "1837EA26-4C41-B16C-DB46-1D82298D8677";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+createNode animCurveTU -n "R_Tailfin_01_Ctrl_scaleZ";
+	rename -uid "C054569A-45E5-4982-77C7-54AC4C869AC3";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  96 1;
+createNode animCurveTL -n "Transform_Control_translateX";
+	rename -uid "93CD9905-47CF-EF9F-BAC1-3AACAE6F7424";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  30 0 91 0 142 0;
+	setAttr ".pre" 3;
+	setAttr ".pst" 3;
+createNode animCurveTL -n "Transform_Control_translateY";
+	rename -uid "5239AE71-4EC4-12AF-C25A-BE84D470B06E";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  30 5 91 -5 142 5;
+	setAttr ".pre" 3;
+	setAttr ".pst" 3;
+createNode animCurveTL -n "Transform_Control_translateZ";
+	rename -uid "3EE956AE-4046-D603-9A41-63B265A84D41";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  30 5 91 -5 142 5;
+	setAttr ".pre" 3;
+	setAttr ".pst" 3;
+createNode animCurveTA -n "Transform_Control_rotateX";
+	rename -uid "6BBE86B8-4DBF-B7C0-E167-B7BF8EC61771";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  0 -5 61 5 112 -5;
+	setAttr ".pre" 3;
+	setAttr ".pst" 3;
+createNode animCurveTA -n "Transform_Control_rotateY";
+	rename -uid "17131FE0-4348-DF0F-032E-64B8883C79FC";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  0 0 61 0 112 0;
+	setAttr ".pre" 3;
+	setAttr ".pst" 3;
+createNode animCurveTA -n "Transform_Control_rotateZ";
+	rename -uid "6ED7C760-44C7-2A93-B92A-4E83698DE1A2";
+	setAttr ".tan" 16;
+	setAttr ".wgt" no;
+	setAttr -s 3 ".ktv[0:2]"  0 0 61 0 112 0;
+	setAttr ".pre" 3;
+	setAttr ".pst" 3;
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -k on ".fzn";
 	setAttr -av -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -k on ".o" 56;
-	setAttr -av -k on ".unw" 56;
+	setAttr -k on ".o" 13;
+	setAttr -av -k on ".unw" 13;
 	setAttr -av -k on ".etw";
 	setAttr -av -k on ".tps";
 	setAttr -av -k on ".tms";
@@ -2219,7 +2380,7 @@ select -ne :renderPartition;
 	setAttr -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -s 3 ".st";
+	setAttr -s 4 ".st";
 	setAttr -cb on ".an";
 	setAttr -cb on ".pt";
 select -ne :renderGlobalsList1;
@@ -2232,16 +2393,20 @@ select -ne :defaultShaderList1;
 	setAttr -cb on ".ihi";
 	setAttr -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -s 7 ".s";
+	setAttr -s 9 ".s";
 select -ne :postProcessList1;
 	setAttr -k on ".cch";
 	setAttr -cb on ".ihi";
 	setAttr -k on ".nds";
 	setAttr -cb on ".bnm";
 	setAttr -s 2 ".p";
+select -ne :defaultRenderUtilityList1;
+	setAttr -s 9 ".u";
 select -ne :defaultRenderingList1;
 	setAttr -k on ".ihi";
 	setAttr -s 3 ".r";
+select -ne :defaultTextureList1;
+	setAttr -s 5 ".tx";
 select -ne :standardSurface1;
 	setAttr ".bc" -type "float3" 0.40000001 0.40000001 0.40000001 ;
 	setAttr ".sr" 0.5;
@@ -2445,151 +2610,169 @@ select -ne :hardwareRenderGlobals;
 	setAttr -k on ".bswa";
 	setAttr -k on ".shml";
 	setAttr -k on ".hwel";
-connectAttr "Spine_Ctrl_translateX.o" "ManateeRigRN.phl[1]";
-connectAttr "Spine_Ctrl_translateY.o" "ManateeRigRN.phl[2]";
-connectAttr "Spine_Ctrl_translateZ.o" "ManateeRigRN.phl[3]";
-connectAttr "Spine_Ctrl_rotateX.o" "ManateeRigRN.phl[4]";
-connectAttr "Spine_Ctrl_rotateY.o" "ManateeRigRN.phl[5]";
-connectAttr "Spine_Ctrl_rotateZ.o" "ManateeRigRN.phl[6]";
-connectAttr "Chest_Ctrl_translateX.o" "ManateeRigRN.phl[7]";
-connectAttr "Chest_Ctrl_translateY.o" "ManateeRigRN.phl[8]";
-connectAttr "Chest_Ctrl_translateZ.o" "ManateeRigRN.phl[9]";
-connectAttr "Chest_Ctrl_rotateX.o" "ManateeRigRN.phl[10]";
-connectAttr "Chest_Ctrl_rotateY.o" "ManateeRigRN.phl[11]";
-connectAttr "Chest_Ctrl_rotateZ.o" "ManateeRigRN.phl[12]";
-connectAttr "ManateeRigRN.phl[13]" "AnimLayer1.dsm" -na;
-connectAttr "ManateeRig:Head_Ctrl_translateX_AnimLayer1.o" "ManateeRigRN.phl[14]"
-		;
-connectAttr "ManateeRigRN.phl[15]" "AnimLayer1.dsm" -na;
-connectAttr "ManateeRig:Head_Ctrl_translateY_AnimLayer1.o" "ManateeRigRN.phl[16]"
-		;
-connectAttr "ManateeRigRN.phl[17]" "AnimLayer1.dsm" -na;
-connectAttr "ManateeRig:Head_Ctrl_translateZ_AnimLayer1.o" "ManateeRigRN.phl[18]"
-		;
+connectAttr "Transform_Control_translateX.o" "ManateeRigRN.phl[1]";
+connectAttr "Transform_Control_translateY.o" "ManateeRigRN.phl[2]";
+connectAttr "Transform_Control_translateZ.o" "ManateeRigRN.phl[3]";
+connectAttr "Transform_Control_rotateX.o" "ManateeRigRN.phl[4]";
+connectAttr "Transform_Control_rotateY.o" "ManateeRigRN.phl[5]";
+connectAttr "Transform_Control_rotateZ.o" "ManateeRigRN.phl[6]";
+connectAttr "Spine_Ctrl_translateX.o" "ManateeRigRN.phl[7]";
+connectAttr "Spine_Ctrl_translateY.o" "ManateeRigRN.phl[8]";
+connectAttr "Spine_Ctrl_translateZ.o" "ManateeRigRN.phl[9]";
+connectAttr "Spine_Ctrl_rotateX.o" "ManateeRigRN.phl[10]";
+connectAttr "Spine_Ctrl_rotateY.o" "ManateeRigRN.phl[11]";
+connectAttr "Spine_Ctrl_rotateZ.o" "ManateeRigRN.phl[12]";
+connectAttr "Chest_Ctrl_translateX.o" "ManateeRigRN.phl[13]";
+connectAttr "Chest_Ctrl_translateY.o" "ManateeRigRN.phl[14]";
+connectAttr "Chest_Ctrl_translateZ.o" "ManateeRigRN.phl[15]";
+connectAttr "Chest_Ctrl_rotateX.o" "ManateeRigRN.phl[16]";
+connectAttr "Chest_Ctrl_rotateY.o" "ManateeRigRN.phl[17]";
+connectAttr "Chest_Ctrl_rotateZ.o" "ManateeRigRN.phl[18]";
 connectAttr "ManateeRigRN.phl[19]" "AnimLayer1.dsm" -na;
-connectAttr "ManateeRig:Head_Ctrl_rotate_AnimLayer1.ox" "ManateeRigRN.phl[20]";
-connectAttr "ManateeRigRN.phl[21]" "AnimLayer1.dsm" -na;
-connectAttr "ManateeRig:Head_Ctrl_rotate_AnimLayer1.oy" "ManateeRigRN.phl[22]";
-connectAttr "ManateeRigRN.phl[23]" "AnimLayer1.dsm" -na;
-connectAttr "ManateeRig:Head_Ctrl_rotate_AnimLayer1.oz" "ManateeRigRN.phl[24]";
-connectAttr "ManateeRigRN.phl[25]" "ManateeRig:Head_Ctrl_rotate_AnimLayer1.ro";
-connectAttr "ManateeRigRN.phl[26]" "AnimLayer1.dsm" -na;
-connectAttr "ManateeRig:Head_Ctrl_scaleX_AnimLayer1.o" "ManateeRigRN.phl[27]";
-connectAttr "ManateeRigRN.phl[28]" "AnimLayer1.dsm" -na;
-connectAttr "ManateeRig:Head_Ctrl_scaleY_AnimLayer1.o" "ManateeRigRN.phl[29]";
-connectAttr "ManateeRigRN.phl[30]" "AnimLayer1.dsm" -na;
-connectAttr "ManateeRig:Head_Ctrl_scaleZ_AnimLayer1.o" "ManateeRigRN.phl[31]";
-connectAttr "ManateeRigRN.phl[32]" "AnimLayer1.dsm" -na;
-connectAttr "ManateeRig:Head_Ctrl_visibility_AnimLayer1.o" "ManateeRigRN.phl[33]"
+connectAttr "ManateeRig:Head_Ctrl_translateX_AnimLayer1.o" "ManateeRigRN.phl[20]"
 		;
-connectAttr "Hips_Ctrl_translateX.o" "ManateeRigRN.phl[34]";
-connectAttr "Hips_Ctrl_translateY.o" "ManateeRigRN.phl[35]";
-connectAttr "Hips_Ctrl_translateZ.o" "ManateeRigRN.phl[36]";
-connectAttr "Hips_Ctrl_rotateX.o" "ManateeRigRN.phl[37]";
-connectAttr "Hips_Ctrl_rotateY.o" "ManateeRigRN.phl[38]";
-connectAttr "Hips_Ctrl_rotateZ.o" "ManateeRigRN.phl[39]";
-connectAttr "Tail_01_Ctrl_translateX.o" "ManateeRigRN.phl[40]";
-connectAttr "Tail_01_Ctrl_translateY.o" "ManateeRigRN.phl[41]";
-connectAttr "Tail_01_Ctrl_translateZ.o" "ManateeRigRN.phl[42]";
-connectAttr "Tail_01_Ctrl_rotateZ.o" "ManateeRigRN.phl[43]";
-connectAttr "Tail_01_Ctrl_rotateX.o" "ManateeRigRN.phl[44]";
-connectAttr "Tail_01_Ctrl_rotateY.o" "ManateeRigRN.phl[45]";
-connectAttr "Tail_02_Ctrl_translateX.o" "ManateeRigRN.phl[46]";
-connectAttr "Tail_02_Ctrl_translateY.o" "ManateeRigRN.phl[47]";
-connectAttr "Tail_02_Ctrl_translateZ.o" "ManateeRigRN.phl[48]";
-connectAttr "Tail_02_Ctrl_rotateX.o" "ManateeRigRN.phl[49]";
-connectAttr "Tail_02_Ctrl_rotateY.o" "ManateeRigRN.phl[50]";
-connectAttr "Tail_02_Ctrl_rotateZ.o" "ManateeRigRN.phl[51]";
-connectAttr "Tail_03_Ctrl_translateX.o" "ManateeRigRN.phl[52]";
-connectAttr "Tail_03_Ctrl_translateY.o" "ManateeRigRN.phl[53]";
-connectAttr "Tail_03_Ctrl_translateZ.o" "ManateeRigRN.phl[54]";
-connectAttr "Tail_03_Ctrl_rotateX.o" "ManateeRigRN.phl[55]";
-connectAttr "Tail_03_Ctrl_rotateY.o" "ManateeRigRN.phl[56]";
-connectAttr "Tail_03_Ctrl_rotateZ.o" "ManateeRigRN.phl[57]";
-connectAttr "Tail_04_Ctrl_translateX.o" "ManateeRigRN.phl[58]";
-connectAttr "Tail_04_Ctrl_translateY.o" "ManateeRigRN.phl[59]";
-connectAttr "Tail_04_Ctrl_translateZ.o" "ManateeRigRN.phl[60]";
-connectAttr "Tail_04_Ctrl_rotateX.o" "ManateeRigRN.phl[61]";
-connectAttr "Tail_04_Ctrl_rotateY.o" "ManateeRigRN.phl[62]";
-connectAttr "Tail_04_Ctrl_rotateZ.o" "ManateeRigRN.phl[63]";
-connectAttr "Tail_05_Ctrl_translateX.o" "ManateeRigRN.phl[64]";
-connectAttr "Tail_05_Ctrl_translateY.o" "ManateeRigRN.phl[65]";
-connectAttr "Tail_05_Ctrl_translateZ.o" "ManateeRigRN.phl[66]";
-connectAttr "Tail_05_Ctrl_rotateX.o" "ManateeRigRN.phl[67]";
-connectAttr "Tail_05_Ctrl_rotateY.o" "ManateeRigRN.phl[68]";
-connectAttr "Tail_05_Ctrl_rotateZ.o" "ManateeRigRN.phl[69]";
-connectAttr "Tail_06_Ctrl_translateX.o" "ManateeRigRN.phl[70]";
-connectAttr "Tail_06_Ctrl_translateY.o" "ManateeRigRN.phl[71]";
-connectAttr "Tail_06_Ctrl_translateZ.o" "ManateeRigRN.phl[72]";
-connectAttr "Tail_06_Ctrl_rotateX.o" "ManateeRigRN.phl[73]";
-connectAttr "Tail_06_Ctrl_rotateY.o" "ManateeRigRN.phl[74]";
-connectAttr "Tail_06_Ctrl_rotateZ.o" "ManateeRigRN.phl[75]";
-connectAttr "Tail_07_Ctrl_translateX.o" "ManateeRigRN.phl[76]";
-connectAttr "Tail_07_Ctrl_translateY.o" "ManateeRigRN.phl[77]";
-connectAttr "Tail_07_Ctrl_translateZ.o" "ManateeRigRN.phl[78]";
-connectAttr "Tail_07_Ctrl_rotateX.o" "ManateeRigRN.phl[79]";
-connectAttr "Tail_07_Ctrl_rotateY.o" "ManateeRigRN.phl[80]";
-connectAttr "Tail_07_Ctrl_rotateZ.o" "ManateeRigRN.phl[81]";
-connectAttr "L_Arm_01_Ctrl_translateX.o" "ManateeRigRN.phl[82]";
-connectAttr "L_Arm_01_Ctrl_translateY.o" "ManateeRigRN.phl[83]";
-connectAttr "L_Arm_01_Ctrl_translateZ.o" "ManateeRigRN.phl[84]";
-connectAttr "L_Arm_01_Ctrl_rotateX.o" "ManateeRigRN.phl[85]";
-connectAttr "L_Arm_01_Ctrl_rotateY.o" "ManateeRigRN.phl[86]";
-connectAttr "L_Arm_01_Ctrl_rotateZ.o" "ManateeRigRN.phl[87]";
-connectAttr "L_Arm_02_Ctrl_translateX.o" "ManateeRigRN.phl[88]";
-connectAttr "L_Arm_02_Ctrl_translateY.o" "ManateeRigRN.phl[89]";
-connectAttr "L_Arm_02_Ctrl_translateZ.o" "ManateeRigRN.phl[90]";
-connectAttr "L_Arm_02_Ctrl_rotateX.o" "ManateeRigRN.phl[91]";
-connectAttr "L_Arm_02_Ctrl_rotateY.o" "ManateeRigRN.phl[92]";
-connectAttr "L_Arm_02_Ctrl_rotateZ.o" "ManateeRigRN.phl[93]";
-connectAttr "L_Arm_03_Ctrl_translateX.o" "ManateeRigRN.phl[94]";
-connectAttr "L_Arm_03_Ctrl_translateY.o" "ManateeRigRN.phl[95]";
-connectAttr "L_Arm_03_Ctrl_translateZ.o" "ManateeRigRN.phl[96]";
-connectAttr "L_Arm_03_Ctrl_rotateX.o" "ManateeRigRN.phl[97]";
-connectAttr "L_Arm_03_Ctrl_rotateY.o" "ManateeRigRN.phl[98]";
-connectAttr "L_Arm_03_Ctrl_rotateZ.o" "ManateeRigRN.phl[99]";
-connectAttr "R_Arm_01_Ctrl_translateX.o" "ManateeRigRN.phl[100]";
-connectAttr "R_Arm_01_Ctrl_translateY.o" "ManateeRigRN.phl[101]";
-connectAttr "R_Arm_01_Ctrl_translateZ.o" "ManateeRigRN.phl[102]";
-connectAttr "R_Arm_01_Ctrl_rotateX.o" "ManateeRigRN.phl[103]";
-connectAttr "R_Arm_01_Ctrl_rotateY.o" "ManateeRigRN.phl[104]";
-connectAttr "R_Arm_01_Ctrl_rotateZ.o" "ManateeRigRN.phl[105]";
-connectAttr "R_Arm_02_Ctrl_translateX.o" "ManateeRigRN.phl[106]";
-connectAttr "R_Arm_02_Ctrl_translateY.o" "ManateeRigRN.phl[107]";
-connectAttr "R_Arm_02_Ctrl_translateZ.o" "ManateeRigRN.phl[108]";
-connectAttr "R_Arm_02_Ctrl_rotateX.o" "ManateeRigRN.phl[109]";
-connectAttr "R_Arm_02_Ctrl_rotateY.o" "ManateeRigRN.phl[110]";
-connectAttr "R_Arm_02_Ctrl_rotateZ.o" "ManateeRigRN.phl[111]";
-connectAttr "R_Arm_03_Ctrl_translateX.o" "ManateeRigRN.phl[112]";
-connectAttr "R_Arm_03_Ctrl_translateY.o" "ManateeRigRN.phl[113]";
-connectAttr "R_Arm_03_Ctrl_translateZ.o" "ManateeRigRN.phl[114]";
-connectAttr "R_Arm_03_Ctrl_rotateX.o" "ManateeRigRN.phl[115]";
-connectAttr "R_Arm_03_Ctrl_rotateY.o" "ManateeRigRN.phl[116]";
-connectAttr "R_Arm_03_Ctrl_rotateZ.o" "ManateeRigRN.phl[117]";
-connectAttr "L_Tailfin_01_Ctrl_translateX.o" "ManateeRigRN.phl[118]";
-connectAttr "L_Tailfin_01_Ctrl_translateY.o" "ManateeRigRN.phl[119]";
-connectAttr "L_Tailfin_01_Ctrl_translateZ.o" "ManateeRigRN.phl[120]";
-connectAttr "L_Tailfin_01_Ctrl_rotateX.o" "ManateeRigRN.phl[121]";
-connectAttr "L_Tailfin_01_Ctrl_rotateY.o" "ManateeRigRN.phl[122]";
-connectAttr "L_Tailfin_01_Ctrl_rotateZ.o" "ManateeRigRN.phl[123]";
-connectAttr "L_Tailfin_02_Ctrl_translateX.o" "ManateeRigRN.phl[124]";
-connectAttr "L_Tailfin_02_Ctrl_translateY.o" "ManateeRigRN.phl[125]";
-connectAttr "L_Tailfin_02_Ctrl_translateZ.o" "ManateeRigRN.phl[126]";
-connectAttr "L_Tailfin_02_Ctrl_rotateX.o" "ManateeRigRN.phl[127]";
-connectAttr "L_Tailfin_02_Ctrl_rotateY.o" "ManateeRigRN.phl[128]";
-connectAttr "L_Tailfin_02_Ctrl_rotateZ.o" "ManateeRigRN.phl[129]";
-connectAttr "R_Tailfin_01_Ctrl_translateX.o" "ManateeRigRN.phl[130]";
-connectAttr "R_Tailfin_01_Ctrl_translateY.o" "ManateeRigRN.phl[131]";
-connectAttr "R_Tailfin_01_Ctrl_translateZ.o" "ManateeRigRN.phl[132]";
-connectAttr "R_Tailfin_01_Ctrl_rotateX.o" "ManateeRigRN.phl[133]";
-connectAttr "R_Tailfin_01_Ctrl_rotateY.o" "ManateeRigRN.phl[134]";
-connectAttr "R_Tailfin_01_Ctrl_rotateZ.o" "ManateeRigRN.phl[135]";
-connectAttr "R_Tailfin_02_Ctrl_translateX.o" "ManateeRigRN.phl[136]";
-connectAttr "R_Tailfin_02_Ctrl_translateY.o" "ManateeRigRN.phl[137]";
-connectAttr "R_Tailfin_02_Ctrl_translateZ.o" "ManateeRigRN.phl[138]";
-connectAttr "R_Tailfin_02_Ctrl_rotateX.o" "ManateeRigRN.phl[139]";
-connectAttr "R_Tailfin_02_Ctrl_rotateY.o" "ManateeRigRN.phl[140]";
-connectAttr "R_Tailfin_02_Ctrl_rotateZ.o" "ManateeRigRN.phl[141]";
+connectAttr "ManateeRigRN.phl[21]" "AnimLayer1.dsm" -na;
+connectAttr "ManateeRig:Head_Ctrl_translateY_AnimLayer1.o" "ManateeRigRN.phl[22]"
+		;
+connectAttr "ManateeRigRN.phl[23]" "AnimLayer1.dsm" -na;
+connectAttr "ManateeRig:Head_Ctrl_translateZ_AnimLayer1.o" "ManateeRigRN.phl[24]"
+		;
+connectAttr "ManateeRigRN.phl[25]" "AnimLayer1.dsm" -na;
+connectAttr "ManateeRig:Head_Ctrl_rotate_AnimLayer1.ox" "ManateeRigRN.phl[26]";
+connectAttr "ManateeRigRN.phl[27]" "AnimLayer1.dsm" -na;
+connectAttr "ManateeRig:Head_Ctrl_rotate_AnimLayer1.oy" "ManateeRigRN.phl[28]";
+connectAttr "ManateeRigRN.phl[29]" "AnimLayer1.dsm" -na;
+connectAttr "ManateeRig:Head_Ctrl_rotate_AnimLayer1.oz" "ManateeRigRN.phl[30]";
+connectAttr "ManateeRigRN.phl[31]" "ManateeRig:Head_Ctrl_rotate_AnimLayer1.ro";
+connectAttr "ManateeRigRN.phl[32]" "AnimLayer1.dsm" -na;
+connectAttr "ManateeRig:Head_Ctrl_scaleX_AnimLayer1.o" "ManateeRigRN.phl[33]";
+connectAttr "ManateeRigRN.phl[34]" "AnimLayer1.dsm" -na;
+connectAttr "ManateeRig:Head_Ctrl_scaleY_AnimLayer1.o" "ManateeRigRN.phl[35]";
+connectAttr "ManateeRigRN.phl[36]" "AnimLayer1.dsm" -na;
+connectAttr "ManateeRig:Head_Ctrl_scaleZ_AnimLayer1.o" "ManateeRigRN.phl[37]";
+connectAttr "ManateeRigRN.phl[38]" "AnimLayer1.dsm" -na;
+connectAttr "ManateeRig:Head_Ctrl_visibility_AnimLayer1.o" "ManateeRigRN.phl[39]"
+		;
+connectAttr "Hips_Ctrl_translateX.o" "ManateeRigRN.phl[40]";
+connectAttr "Hips_Ctrl_translateY.o" "ManateeRigRN.phl[41]";
+connectAttr "Hips_Ctrl_translateZ.o" "ManateeRigRN.phl[42]";
+connectAttr "Hips_Ctrl_rotateX.o" "ManateeRigRN.phl[43]";
+connectAttr "Hips_Ctrl_rotateY.o" "ManateeRigRN.phl[44]";
+connectAttr "Hips_Ctrl_rotateZ.o" "ManateeRigRN.phl[45]";
+connectAttr "Tail_01_Ctrl_translateX.o" "ManateeRigRN.phl[46]";
+connectAttr "Tail_01_Ctrl_translateY.o" "ManateeRigRN.phl[47]";
+connectAttr "Tail_01_Ctrl_translateZ.o" "ManateeRigRN.phl[48]";
+connectAttr "Tail_01_Ctrl_rotateZ.o" "ManateeRigRN.phl[49]";
+connectAttr "Tail_01_Ctrl_rotateX.o" "ManateeRigRN.phl[50]";
+connectAttr "Tail_01_Ctrl_rotateY.o" "ManateeRigRN.phl[51]";
+connectAttr "Tail_02_Ctrl_translateX.o" "ManateeRigRN.phl[52]";
+connectAttr "Tail_02_Ctrl_translateY.o" "ManateeRigRN.phl[53]";
+connectAttr "Tail_02_Ctrl_translateZ.o" "ManateeRigRN.phl[54]";
+connectAttr "Tail_02_Ctrl_rotateX.o" "ManateeRigRN.phl[55]";
+connectAttr "Tail_02_Ctrl_rotateY.o" "ManateeRigRN.phl[56]";
+connectAttr "Tail_02_Ctrl_rotateZ.o" "ManateeRigRN.phl[57]";
+connectAttr "Tail_03_Ctrl_translateX.o" "ManateeRigRN.phl[58]";
+connectAttr "Tail_03_Ctrl_translateY.o" "ManateeRigRN.phl[59]";
+connectAttr "Tail_03_Ctrl_translateZ.o" "ManateeRigRN.phl[60]";
+connectAttr "Tail_03_Ctrl_rotateX.o" "ManateeRigRN.phl[61]";
+connectAttr "Tail_03_Ctrl_rotateY.o" "ManateeRigRN.phl[62]";
+connectAttr "Tail_03_Ctrl_rotateZ.o" "ManateeRigRN.phl[63]";
+connectAttr "Tail_04_Ctrl_translateX.o" "ManateeRigRN.phl[64]";
+connectAttr "Tail_04_Ctrl_translateY.o" "ManateeRigRN.phl[65]";
+connectAttr "Tail_04_Ctrl_translateZ.o" "ManateeRigRN.phl[66]";
+connectAttr "Tail_04_Ctrl_rotateX.o" "ManateeRigRN.phl[67]";
+connectAttr "Tail_04_Ctrl_rotateY.o" "ManateeRigRN.phl[68]";
+connectAttr "Tail_04_Ctrl_rotateZ.o" "ManateeRigRN.phl[69]";
+connectAttr "Tail_05_Ctrl_translateX.o" "ManateeRigRN.phl[70]";
+connectAttr "Tail_05_Ctrl_translateY.o" "ManateeRigRN.phl[71]";
+connectAttr "Tail_05_Ctrl_translateZ.o" "ManateeRigRN.phl[72]";
+connectAttr "Tail_05_Ctrl_rotateX.o" "ManateeRigRN.phl[73]";
+connectAttr "Tail_05_Ctrl_rotateY.o" "ManateeRigRN.phl[74]";
+connectAttr "Tail_05_Ctrl_rotateZ.o" "ManateeRigRN.phl[75]";
+connectAttr "Tail_06_Ctrl_translateX.o" "ManateeRigRN.phl[76]";
+connectAttr "Tail_06_Ctrl_translateY.o" "ManateeRigRN.phl[77]";
+connectAttr "Tail_06_Ctrl_translateZ.o" "ManateeRigRN.phl[78]";
+connectAttr "Tail_06_Ctrl_rotateX.o" "ManateeRigRN.phl[79]";
+connectAttr "Tail_06_Ctrl_rotateY.o" "ManateeRigRN.phl[80]";
+connectAttr "Tail_06_Ctrl_rotateZ.o" "ManateeRigRN.phl[81]";
+connectAttr "Tail_06_Ctrl_scaleX.o" "ManateeRigRN.phl[82]";
+connectAttr "Tail_06_Ctrl_scaleY.o" "ManateeRigRN.phl[83]";
+connectAttr "Tail_06_Ctrl_scaleZ.o" "ManateeRigRN.phl[84]";
+connectAttr "Tail_06_Ctrl_visibility.o" "ManateeRigRN.phl[85]";
+connectAttr "Tail_07_Ctrl_translateX.o" "ManateeRigRN.phl[86]";
+connectAttr "Tail_07_Ctrl_translateY.o" "ManateeRigRN.phl[87]";
+connectAttr "Tail_07_Ctrl_translateZ.o" "ManateeRigRN.phl[88]";
+connectAttr "Tail_07_Ctrl_rotateX.o" "ManateeRigRN.phl[89]";
+connectAttr "Tail_07_Ctrl_rotateY.o" "ManateeRigRN.phl[90]";
+connectAttr "Tail_07_Ctrl_rotateZ.o" "ManateeRigRN.phl[91]";
+connectAttr "L_Arm_01_Ctrl_translateX.o" "ManateeRigRN.phl[92]";
+connectAttr "L_Arm_01_Ctrl_translateY.o" "ManateeRigRN.phl[93]";
+connectAttr "L_Arm_01_Ctrl_translateZ.o" "ManateeRigRN.phl[94]";
+connectAttr "L_Arm_01_Ctrl_rotateX.o" "ManateeRigRN.phl[95]";
+connectAttr "L_Arm_01_Ctrl_rotateY.o" "ManateeRigRN.phl[96]";
+connectAttr "L_Arm_01_Ctrl_rotateZ.o" "ManateeRigRN.phl[97]";
+connectAttr "L_Arm_02_Ctrl_translateX.o" "ManateeRigRN.phl[98]";
+connectAttr "L_Arm_02_Ctrl_translateY.o" "ManateeRigRN.phl[99]";
+connectAttr "L_Arm_02_Ctrl_translateZ.o" "ManateeRigRN.phl[100]";
+connectAttr "L_Arm_02_Ctrl_rotateX.o" "ManateeRigRN.phl[101]";
+connectAttr "L_Arm_02_Ctrl_rotateY.o" "ManateeRigRN.phl[102]";
+connectAttr "L_Arm_02_Ctrl_rotateZ.o" "ManateeRigRN.phl[103]";
+connectAttr "L_Arm_03_Ctrl_translateX.o" "ManateeRigRN.phl[104]";
+connectAttr "L_Arm_03_Ctrl_translateY.o" "ManateeRigRN.phl[105]";
+connectAttr "L_Arm_03_Ctrl_translateZ.o" "ManateeRigRN.phl[106]";
+connectAttr "L_Arm_03_Ctrl_rotateX.o" "ManateeRigRN.phl[107]";
+connectAttr "L_Arm_03_Ctrl_rotateY.o" "ManateeRigRN.phl[108]";
+connectAttr "L_Arm_03_Ctrl_rotateZ.o" "ManateeRigRN.phl[109]";
+connectAttr "R_Arm_01_Ctrl_translateX.o" "ManateeRigRN.phl[110]";
+connectAttr "R_Arm_01_Ctrl_translateY.o" "ManateeRigRN.phl[111]";
+connectAttr "R_Arm_01_Ctrl_translateZ.o" "ManateeRigRN.phl[112]";
+connectAttr "R_Arm_01_Ctrl_rotateX.o" "ManateeRigRN.phl[113]";
+connectAttr "R_Arm_01_Ctrl_rotateY.o" "ManateeRigRN.phl[114]";
+connectAttr "R_Arm_01_Ctrl_rotateZ.o" "ManateeRigRN.phl[115]";
+connectAttr "R_Arm_02_Ctrl_translateX.o" "ManateeRigRN.phl[116]";
+connectAttr "R_Arm_02_Ctrl_translateY.o" "ManateeRigRN.phl[117]";
+connectAttr "R_Arm_02_Ctrl_translateZ.o" "ManateeRigRN.phl[118]";
+connectAttr "R_Arm_02_Ctrl_rotateX.o" "ManateeRigRN.phl[119]";
+connectAttr "R_Arm_02_Ctrl_rotateY.o" "ManateeRigRN.phl[120]";
+connectAttr "R_Arm_02_Ctrl_rotateZ.o" "ManateeRigRN.phl[121]";
+connectAttr "R_Arm_03_Ctrl_translateX.o" "ManateeRigRN.phl[122]";
+connectAttr "R_Arm_03_Ctrl_translateY.o" "ManateeRigRN.phl[123]";
+connectAttr "R_Arm_03_Ctrl_translateZ.o" "ManateeRigRN.phl[124]";
+connectAttr "R_Arm_03_Ctrl_rotateX.o" "ManateeRigRN.phl[125]";
+connectAttr "R_Arm_03_Ctrl_rotateY.o" "ManateeRigRN.phl[126]";
+connectAttr "R_Arm_03_Ctrl_rotateZ.o" "ManateeRigRN.phl[127]";
+connectAttr "L_Tailfin_01_Ctrl_translateX.o" "ManateeRigRN.phl[128]";
+connectAttr "L_Tailfin_01_Ctrl_translateY.o" "ManateeRigRN.phl[129]";
+connectAttr "L_Tailfin_01_Ctrl_translateZ.o" "ManateeRigRN.phl[130]";
+connectAttr "L_Tailfin_01_Ctrl_rotateX.o" "ManateeRigRN.phl[131]";
+connectAttr "L_Tailfin_01_Ctrl_rotateY.o" "ManateeRigRN.phl[132]";
+connectAttr "L_Tailfin_01_Ctrl_rotateZ.o" "ManateeRigRN.phl[133]";
+connectAttr "L_Tailfin_01_Ctrl_scaleX.o" "ManateeRigRN.phl[134]";
+connectAttr "L_Tailfin_01_Ctrl_scaleY.o" "ManateeRigRN.phl[135]";
+connectAttr "L_Tailfin_01_Ctrl_scaleZ.o" "ManateeRigRN.phl[136]";
+connectAttr "L_Tailfin_01_Ctrl_visibility.o" "ManateeRigRN.phl[137]";
+connectAttr "L_Tailfin_02_Ctrl_translateX.o" "ManateeRigRN.phl[138]";
+connectAttr "L_Tailfin_02_Ctrl_translateY.o" "ManateeRigRN.phl[139]";
+connectAttr "L_Tailfin_02_Ctrl_translateZ.o" "ManateeRigRN.phl[140]";
+connectAttr "L_Tailfin_02_Ctrl_rotateX.o" "ManateeRigRN.phl[141]";
+connectAttr "L_Tailfin_02_Ctrl_rotateY.o" "ManateeRigRN.phl[142]";
+connectAttr "L_Tailfin_02_Ctrl_rotateZ.o" "ManateeRigRN.phl[143]";
+connectAttr "R_Tailfin_01_Ctrl_translateX.o" "ManateeRigRN.phl[144]";
+connectAttr "R_Tailfin_01_Ctrl_translateY.o" "ManateeRigRN.phl[145]";
+connectAttr "R_Tailfin_01_Ctrl_translateZ.o" "ManateeRigRN.phl[146]";
+connectAttr "R_Tailfin_01_Ctrl_rotateX.o" "ManateeRigRN.phl[147]";
+connectAttr "R_Tailfin_01_Ctrl_rotateY.o" "ManateeRigRN.phl[148]";
+connectAttr "R_Tailfin_01_Ctrl_rotateZ.o" "ManateeRigRN.phl[149]";
+connectAttr "R_Tailfin_01_Ctrl_scaleX.o" "ManateeRigRN.phl[150]";
+connectAttr "R_Tailfin_01_Ctrl_scaleY.o" "ManateeRigRN.phl[151]";
+connectAttr "R_Tailfin_01_Ctrl_scaleZ.o" "ManateeRigRN.phl[152]";
+connectAttr "R_Tailfin_01_Ctrl_visibility.o" "ManateeRigRN.phl[153]";
+connectAttr "R_Tailfin_02_Ctrl_translateX.o" "ManateeRigRN.phl[154]";
+connectAttr "R_Tailfin_02_Ctrl_translateY.o" "ManateeRigRN.phl[155]";
+connectAttr "R_Tailfin_02_Ctrl_translateZ.o" "ManateeRigRN.phl[156]";
+connectAttr "R_Tailfin_02_Ctrl_rotateX.o" "ManateeRigRN.phl[157]";
+connectAttr "R_Tailfin_02_Ctrl_rotateY.o" "ManateeRigRN.phl[158]";
+connectAttr "R_Tailfin_02_Ctrl_rotateZ.o" "ManateeRigRN.phl[159]";
 connectAttr "camera1_visibility.o" "camera1.v";
 connectAttr "camera1_translateX.o" "camera1.tx";
 connectAttr "camera1_translateY.o" "camera1.ty";
